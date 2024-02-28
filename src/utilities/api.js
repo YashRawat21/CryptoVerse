@@ -1,0 +1,1 @@
+export const coinData = "https://api.coingecko.com/api/v3" 
