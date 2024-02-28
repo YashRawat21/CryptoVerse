@@ -22,15 +22,29 @@ const Exchanges = () => {
           loading ? <Loader /> : <>
            <Header />
        <div>
-        <div>
-          <img />
-        </div>
+        {
+          exchanges.map((coin) => {
+            return (
+               <div className='flex items-center justify-evenly mt-60'>
+               <div>
+              <img src= {coin.image} className='h-20 ' />
+            </div>
         <div>
           {/* name */}
+          <h4 className='w-20'>{coin.name}</h4>
         </div>
         <div>
-          {/* rank */}
+          {/* price */}
+          <h4 className='w-20'>{coin.trade_volume_24h_btc.toFixed(0)}</h4>
         </div>
+            <div>
+              {/* rank */}
+             <h4 className='w-20'>{coin.trust_score_rank}</h4>   
+            </div>
+              </div>
+            )
+          })
+        }
        </div>
           </>
         }
