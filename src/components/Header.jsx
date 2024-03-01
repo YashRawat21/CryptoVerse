@@ -9,6 +9,7 @@ const Header = () => {
         <h1 className='text-2xl font-extrabold'>CrytpoVerse</h1>
         <FaEthereum className='text-orange-500  text-2xl'/>
       </div>
+      
       <ul className='flex'>
         <li className='ml-[15rem] text-white font-bold'><Link to= "/">Home</Link></li>
         <li><Link className='ml-[15rem] text-white font-bold' to= "/coins">Coins</Link></li>
