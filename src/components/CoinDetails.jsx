@@ -5,6 +5,7 @@ import Loader from './Loader';
 import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoPulseOutline } from "react-icons/io5";
+import CoinChart from './CoinChart';
 
 
  const CoinDetails = () => {
@@ -37,7 +38,6 @@ import { IoPulseOutline } from "react-icons/io5";
          setCoinDetails(json);
           setLoading(false)
         }
-        console.log(coinDetails)
 
     useEffect(() => {
         getCoin();
@@ -57,13 +57,15 @@ import { IoPulseOutline } from "react-icons/io5";
                             </div>
                            
                             <div>
-                                <img className='mt-16 h-36 ' src= {coinDetails.image.thumb} alt='Coin logo' />
+                                <img className='mt-16 h-36 object-cover' src= {coinDetails?.image?.small} alt='Coin logo' />
                             </div>
                             <div className='font-bold text-3xl mt-[50px]'>{coinDetails.name}</div>
                             <div className='font-bold text-xl mt-3'>{currency == 'inr' ? "₹" : "$"}{coinDetails.market_data.current_price[currency]}</div>
                             <div className='mt-3 ml-2 flex items-center'> {profit ? < IoIosArrowUp color='green'/>: <IoIosArrowDown color='red'/>} {coinDetails.market_data.price_change_percentage_24h}%</div>
                             <div className='font-bold text-2xl mt-5 ml-1 flex items-center'> <IoPulseOutline color='orange'/>#{coinDetails.market_cap_rank}</div>
                             <div className='mt-5 w-80'>{coinDetails.description.en.split('.')[0]}</div>
+
+                            <CoinChart />
                         </div>
                   
                 ) 
