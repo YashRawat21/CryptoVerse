@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import { coinData } from '../utilities/api';
 import Loader from './Loader';
+import OurModel from './OutModel';
 
 const Exchanges = () => {
   const [loading, setLoading] = useState(true);
@@ -30,6 +31,7 @@ const Exchanges = () => {
       ) : (
         <>
           <Header />
+          <OurModel />
           <div>
             {Array.isArray(exchanges) && exchanges.length > 0 ? (
               exchanges.map((coin, i) => (

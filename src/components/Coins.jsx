@@ -8,6 +8,7 @@ const Coins = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currency, setCurrency] = useState('inr');
+  const [search , setSearch] = useState('')
   const selectedCurrency = currency === 'inr' ? "₹" : "$";
   //  const {id} = useParams()
   const getCoinData = async () => {
@@ -38,12 +39,20 @@ console.log(coins)
       ) : (
         <>
           <Header />
+          <div>
+            <input type='text' placeholder='Search Your Coins' className='text-black h-8 w-80 absolute top-[1%] left-[35%]  px-4 outline-none' onChange={(e) => setSearch(e.target.value)}/>
+          </div>
           <div className=' ml-40'>
             <button className= 'h-8 w-20 ml-7 mt-16 bg-orange-500 rounded-lg'onClick={() => setCurrency("inr")}>INR</button>
             <button className= 'h-8 w-20 ml-7 mt-16 bg-orange-500 rounded-lg' onClick={() => setCurrency("usd")}>USD</button>
           </div>
           <div>
-            {coins.map((coin, i) => {
+            {coins.filter((data)=> {
+               if(data === '') {
+                return data 
+               }else if(data.name.toLowerCase().includes(search.toLowerCase()))
+               return data 
+            }).map((coin, i) => {
               const profit = coin.price_change_percentage_24h > 0;
               const id = coin.id ;
              return(
